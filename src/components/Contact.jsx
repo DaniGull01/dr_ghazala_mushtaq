@@ -95,16 +95,22 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <h4 className="font-heading font-bold text-deep-teal mb-4">Service Areas</h4>
-              <div className="w-full h-48 rounded-xl bg-gradient-to-br from-deep-teal/5 to-medical-blue/5 flex items-center justify-center border border-gray-200">
-                <div className="text-center">
-                  <MapPin size={32} className="text-medical-blue mx-auto mb-2" />
-                  <p className="text-gray-500 text-sm">Islamabad & Rawalpindi</p>
-                  <p className="text-gray-400 text-xs mt-1">In-clinic and home visit consultations available</p>
-                </div>
-              </div>
+            {/* Google Map */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 overflow-hidden">
+              <h4 className="font-heading font-bold text-deep-teal mb-4">Service Location</h4>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5693854765354!2d73.06781338465711!3d33.613948420284075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df9665a68ad6fb%3A0x1234567890!2sRawalpindi%2C%20Islamabad!5e0!3m2!1sen!2s!4v1234567890"
+                width="100%"
+                height="250"
+                style={{ border: 0, borderRadius: '0.75rem' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <p className="text-gray-500 text-sm mt-4">
+                📍 Islamabad & Rawalpindi
+              </p>
+              <p className="text-gray-400 text-xs mt-1">In-clinic and home visit consultations available</p>
             </div>
           </motion.div>
 
