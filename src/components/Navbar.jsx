@@ -11,8 +11,10 @@ const navLinks = [
   { name: 'Research', href: '#research' },
   { name: 'Contact', href: '#contact' },
   { name: 'Reviews', href: '#reviews' },
-
 ]
+
+const MOBILE_MENU_CLOSE_DURATION = 300 // ms, matches the exit transition below
+const NAVBAR_OFFSET = 90 // px, roughly the fixed navbar height + breathing room
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -23,6 +25,27 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const scrollToSection = (href) => {
+    const id = href.replace('#', '')
+    const el = document.getElementById(id)
+    if (!el) return
+    const y = el.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET
+    window.scrollTo({ top: y, behavior: 'smooth' })
+  }
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+
+    if (mobileOpen) {
+      // Close the menu first, then scroll once the collapse animation
+      // has finished so the layout shift doesn't interrupt navigation.
+      setMobileOpen(false)
+      setTimeout(() => scrollToSection(href), MOBILE_MENU_CLOSE_DURATION)
+    } else {
+      scrollToSection(href)
+    }
+  }
 
   return (
     <motion.nav
@@ -35,7 +58,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a href="#home" className="flex items-center gap-2">
+          <a
+            href="#home"
+            onClick={(e) => handleNavClick(e, '#home')}
+            className="flex items-center gap-2"
+          >
             <span className={`text-xl lg:text-2xl font-bold font-heading transition-colors ${
               scrolled ? 'text-deep-teal' : 'text-white'
             }`}>
@@ -48,6 +75,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-sm font-medium transition-colors hover:text-warm-copper ${
                   scrolled ? 'text-gray-700' : 'text-white/90'
                 }`}
@@ -57,6 +85,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="flex items-center gap-2 bg-warm-copper hover:bg-warm-copper/90 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-warm-copper/25"
             >
               <Calendar size={16} />
@@ -82,6 +111,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: MOBILE_MENU_CLOSE_DURATION / 1000 }}
             className="lg:hidden bg-white shadow-xl overflow-hidden"
           >
             <div className="px-4 py-4 space-y-3">
@@ -89,7 +119,7 @@ export default function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="block text-gray-700 font-medium py-2 hover:text-warm-copper transition-colors"
                 >
                   {link.name}
@@ -97,7 +127,7 @@ export default function Navbar() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleNavClick(e, '#contact')}
                 className="flex items-center justify-center gap-2 bg-warm-copper text-white px-5 py-3 rounded-full text-sm font-semibold transition-all hover:bg-warm-copper/90"
               >
                 <Calendar size={16} />
