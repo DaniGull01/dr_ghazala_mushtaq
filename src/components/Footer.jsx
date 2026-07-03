@@ -25,7 +25,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.linkedin.com/in/ghazala-mushtaq-2193b3284"
+                href="https://www.linkedin.com/in/dr-ghazala-rana-pt-243a1a368?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/10 hover:bg-warm-copper flex items-center justify-center transition-colors"
