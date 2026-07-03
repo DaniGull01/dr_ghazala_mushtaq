@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Calendar, MessageCircle, GraduationCap, Stethoscope, Brain, UserCheck } from 'lucide-react'
 
 const stats = [
-  { icon: GraduationCap, label: 'DPT Graduate', value: 'GCUF' },
+  { icon: GraduationCap, label: 'Certified cupping & dry needling therapist', value: 'Physiotherapist' },
   { icon: Stethoscope, label: 'Clinical Rotations', value: '5+' },
   { icon: Brain, label: 'Orthopedic & Neuro Rehab', value: 'Specialist' },
   { icon: UserCheck, label: 'Independent Practice', value: 'Active' },

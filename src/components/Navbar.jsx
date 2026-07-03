@@ -10,6 +10,8 @@ const navLinks = [
   { name: 'Experience', href: '#experience' },
   { name: 'Research', href: '#research' },
   { name: 'Contact', href: '#contact' },
+  { name: 'Reviews', href: '#reviews' },
+
 ]
 
 export default function Navbar() {

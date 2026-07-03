@@ -4,6 +4,13 @@ import { Award, BookOpen, FlaskConical, ClipboardCheck } from 'lucide-react'
 const certifications = [
   {
     icon: Award,
+    title: 'Dry Needling & Cupping Therapy Certification',
+    desc: 'Certified in advanced dry needling and cupping techniques for pain management',
+    color: 'from-medical-blue to-cyan-500',
+    image: './1000512065.jpg',
+  },
+  {
+    icon: Award,
     title: 'Pre-Service Training Provider Course on Clubfoot',
     desc: 'Specialized training in clubfoot management and rehabilitation',
     color: 'from-medical-blue to-cyan-500',
@@ -17,18 +24,18 @@ const certifications = [
     image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80',
   },
   {
-    icon: ClipboardCheck,
-    title: 'Physiotherapy Clinical Internship',
-    desc: 'Comprehensive clinical training at NIRM Islamabad',
-    color: 'from-emerald-500 to-teal-500',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80',
-  },
-  {
     icon: BookOpen,
     title: 'SPSS & EndNote Workshop',
     desc: 'Research methodology and data analysis certification',
     color: 'from-purple-500 to-violet-500',
     image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80',
+  },
+  {
+    icon: BookOpen,
+    title: 'Dry Needling and Pain Management Workshop',
+    desc: 'Hands-on workshop on dry needling techniques and pain management strategies',
+    color: 'from-purple-500 to-violet-500',
+    image: './1000511594.jpg',
   },
 ]
 
@@ -67,7 +74,7 @@ export default function Certifications() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 md:grid-cols-3 gap-6"
         >
           {certifications.map((cert) => (
             <motion.div
@@ -78,14 +85,14 @@ export default function Certifications() {
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
             >
               {/* Image */}
-              <div className="relative h-32 overflow-hidden">
+              <div className="relative h-[13rem] overflow-hidden">
                 <img
                   src={cert.image}
                   alt={cert.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" /> */}
                 <div className={`absolute top-3 left-3 w-10 h-10 rounded-lg bg-gradient-to-br ${cert.color} flex items-center justify-center shadow-lg`}>
                   <cert.icon size={18} className="text-white" />
                 </div>

@@ -19,13 +19,13 @@ const services = [
     icon: Syringe,
     title: 'Dry Needling',
     desc: 'Evidence-based pain management using trigger point therapy.',
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80',
+    image: './1000512115.jpg',
   },
   {
     icon: FlaskConical,
     title: 'Cupping Therapy',
     desc: 'Dry and wet cupping for pain relief and improved circulation.',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80',
+    image: './1000512112.jpg',
   },
   {
     icon: Dumbbell,

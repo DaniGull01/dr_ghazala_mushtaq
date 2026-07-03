@@ -17,7 +17,7 @@ const experiences = [
   },
   {
     period: 'Nov 2025 – Mar 2026',
-    title: 'Clinical Internship',
+    title: 'Physiotherapist',
     org: 'National Institute of Rehabilitation Medicine (NIRM)',
     location: 'Islamabad',
     color: 'from-medical-blue to-cyan-500',

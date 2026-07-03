@@ -1,7 +1,59 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Linkedin, MessageCircle, Send } from 'lucide-react'
 
+const WHATSAPP_NUMBER = '923188910400' // no + or leading zeros
+
+const SERVICE_LABELS = {
+  musculoskeletal: 'Musculoskeletal Rehabilitation',
+  orthopedic: 'Orthopedic Rehabilitation',
+  neurological: 'Neurological Rehabilitation',
+  pediatric: 'Pediatric Rehabilitation',
+  'post-op': 'Post-Operative Rehabilitation',
+  pain: 'Pain Management',
+  other: 'Other',
+}
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  })
+
+  const handleChange = (e) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({ ...prev, [id]: value }))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const serviceLabel = SERVICE_LABELS[formData.service] || 'Not specified'
+
+    const messageLines = [
+      '*New Appointment Request*',
+      '',
+      `*Name:* ${formData.name || '-'}`,
+      `*Email:* ${formData.email || '-'}`,
+      `*Phone:* ${formData.phone || '-'}`,
+      `*Service Interested In:* ${serviceLabel}`,
+      '',
+      `*Message:*`,
+      formData.message || '-',
+    ]
+
+    const encodedMessage = encodeURIComponent(messageLines.join('\n'))
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+
+    // Optional: reset the form after sending
+    setFormData({ name: '', email: '', phone: '', service: '', message: '' })
+  }
+
   return (
     <section id="contact" className="py-20 lg:py-28 bg-light-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,7 +175,7 @@ export default function Contact() {
           >
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <h3 className="text-xl font-heading font-bold text-deep-teal mb-6">Send a Message</h3>
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
@@ -131,6 +183,9 @@ export default function Contact() {
                       type="text"
                       id="name"
                       placeholder="Your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-medical-blue focus:ring-2 focus:ring-medical-blue/20 outline-none transition-all text-sm"
                     />
                   </div>
@@ -140,6 +195,8 @@ export default function Contact() {
                       type="email"
                       id="email"
                       placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-medical-blue focus:ring-2 focus:ring-medical-blue/20 outline-none transition-all text-sm"
                     />
                   </div>
@@ -150,6 +207,8 @@ export default function Contact() {
                     type="tel"
                     id="phone"
                     placeholder="+92 3XX XXXXXXX"
+                    value={formData.phone}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-medical-blue focus:ring-2 focus:ring-medical-blue/20 outline-none transition-all text-sm"
                   />
                 </div>
@@ -157,6 +216,8 @@ export default function Contact() {
                   <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1.5">Service Interested In</label>
                   <select
                     id="service"
+                    value={formData.service}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-medical-blue focus:ring-2 focus:ring-medical-blue/20 outline-none transition-all text-sm text-gray-500"
                   >
                     <option value="">Select a service</option>
@@ -175,6 +236,8 @@ export default function Contact() {
                     id="message"
                     rows={4}
                     placeholder="Tell me about your condition..."
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-medical-blue focus:ring-2 focus:ring-medical-blue/20 outline-none transition-all text-sm resize-none"
                   />
                 </div>
@@ -189,7 +252,7 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </div>      
     </section>
   )
 }

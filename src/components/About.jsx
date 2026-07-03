@@ -23,19 +23,12 @@ export default function About() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <div className="w-full h-[500px]">
                 <img
-                  src="/ghazala.jpeg"
+                  src="./1000512109.jpg"
                   alt="Dr. Ghazala Mushtaq"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-teal/60 via-transparent to-transparent" />
-                {/* Quote overlay at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-deep-teal/90 via-deep-teal/60 to-transparent">
-                  <Quote size={28} className="text-warm-copper mb-2" />
-                  <p className="text-white/95 text-lg italic leading-relaxed font-light">
-                    "Every patient deserves a personalized path toward recovery and independence."
-                  </p>
-                </div>
+              
               </div>
             </div>
             {/* Decorative elements */}

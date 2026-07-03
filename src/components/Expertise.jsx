@@ -2,6 +2,20 @@ import { motion } from 'framer-motion'
 import { Bone, Spline, Brain, Baby, Activity, Syringe } from 'lucide-react'
 
 const expertiseAreas = [
+   {
+    icon: Syringe,
+    title: 'Pain Management',
+    items: [ 'Dry Needling & Acupuncture Therapy',],
+    color: 'from-warm-copper to-amber-600',
+    image: './1000512115.jpg',
+  },
+  {
+    icon: Syringe,
+    title: 'Pain Management',
+    items: ['Cupping Therapy'],
+    color: 'from-warm-copper to-amber-600',
+    image: './1000512112.jpg',
+  },
   {
     icon: Bone,
     title: 'Musculoskeletal Rehabilitation',
@@ -36,14 +50,7 @@ const expertiseAreas = [
     items: ['Surgical Recovery', 'Mobility Restoration'],
     color: 'from-orange-500 to-amber-500',
     image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&q=80',
-  },
-  {
-    icon: Syringe,
-    title: 'Pain Management',
-    items: ['Manual Therapy', 'Dry Needling', 'Cupping Therapy'],
-    color: 'from-warm-copper to-amber-600',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80',
-  },
+  }
 ]
 
 const container = {
