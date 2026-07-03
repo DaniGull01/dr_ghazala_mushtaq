@@ -127,7 +127,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-gray-700">LinkedIn</p>
-                    <a href="https://www.linkedin.com/in/ghazala-mushtaq-2193b3284" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-warm-copper transition-colors text-sm">
+                    <a href="https://www.linkedin.com/in/dr-ghazala-rana-pt-243a1a368?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-warm-copper transition-colors text-sm">
                       Connect on LinkedIn
                     </a>
                   </div>
