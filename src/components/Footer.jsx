@@ -78,6 +78,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="tel:+923188910400" className="text-gray-400 hover:text-warm-copper transition-colors text-sm flex items-center gap-2">
+                  <Phone size={14} />
+                  05123225019
+                </a>
+              </li>
+              <li>
                 <a href="mailto:ghazalarana58@gmail.com" className="text-gray-400 hover:text-warm-copper transition-colors text-sm flex items-center gap-2">
                   <Mail size={14} />
                   ghazalarana58@gmail.com

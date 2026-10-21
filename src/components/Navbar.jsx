@@ -13,8 +13,8 @@ const navLinks = [
   { name: 'Reviews', href: '#reviews' },
 ]
 
-const MOBILE_MENU_CLOSE_DURATION = 300 // ms, matches the exit transition below
-const NAVBAR_OFFSET = 90 // px, roughly the fixed navbar height + breathing room
+const MOBILE_MENU_CLOSE_DURATION = 300 
+const NAVBAR_OFFSET = 90 
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -53,22 +53,23 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/95 backdrop-blur-md shadow-lg'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a
+          <img
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
             className="flex items-center gap-2"
-          >
-            <span className={`text-xl lg:text-2xl font-bold font-heading transition-colors ${
-              scrolled ? 'text-deep-teal' : 'text-white'
-            }`}>
-              Dr. Ghazala<span className="text-warm-copper">.</span>
-            </span>
-          </a>
+            src="/logo.jpeg"
+            alt="Dr. Ghazala Mushtaq Logo"
+            width={180}
+            height={180}
+          />
+          
+            
+        
 
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -76,8 +77,8 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium transition-colors hover:text-warm-copper ${
-                  scrolled ? 'text-gray-700' : 'text-white/90'
+                className={`text-sm font-medium transition-colors hover:text-[#00b5f1] ${
+                  scrolled ? 'text-gray-700' : 'text-gray-700'
                 }`}
               >
                 {link.name}
@@ -86,7 +87,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
-              className="flex items-center gap-2 bg-warm-copper hover:bg-warm-copper/90 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-warm-copper/25"
+              className="flex items-center gap-2 bg-[#00b5f1] hover:bg-[#00b5f1]/90 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-[#00b5f1]/25"
             >
               <Calendar size={16} />
               Book Appointment
@@ -120,7 +121,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="block text-gray-700 font-medium py-2 hover:text-warm-copper transition-colors"
+                  className="block text-gray-700 font-medium py-2 hover:text-[#00b5f1] transition-colors"
                 >
                   {link.name}
                 </a>
@@ -128,7 +129,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, '#contact')}
-                className="flex items-center justify-center gap-2 bg-warm-copper text-white px-5 py-3 rounded-full text-sm font-semibold transition-all hover:bg-warm-copper/90"
+                className="flex items-center justify-center gap-2 bg-[#00b5f1] text-white px-5 py-3 rounded-full text-sm font-semibold transition-all hover:bg-[#00b5f1]/90"
               >
                 <Calendar size={16} />
                 Book Appointment

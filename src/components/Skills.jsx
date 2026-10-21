@@ -77,7 +77,7 @@ export default function Skills() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&q=80"
+                src="./fit.jpg"
                 alt="Physiotherapy practice"
                 className="w-full h-72 lg:h-96 object-cover"
                 loading="lazy"

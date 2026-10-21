@@ -1,0 +1,143 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Calendar } from 'lucide-react'
+
+const navLinks = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Expertise', href: '#expertise' },
+  { name: 'Services', href: '#services' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Research', href: '#research' },
+  { name: 'Contact', href: '#contact' },
+  { name: 'Reviews', href: '#reviews' },
+]
+
+const MOBILE_MENU_CLOSE_DURATION = 300 
+const NAVBAR_OFFSET = 90 
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToSection = (href) => {
+    const id = href.replace('#', '')
+    const el = document.getElementById(id)
+    if (!el) return
+    const y = el.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET
+    window.scrollTo({ top: y, behavior: 'smooth' })
+  }
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+
+    if (mobileOpen) {
+      // Close the menu first, then scroll once the collapse animation
+      // has finished so the layout shift doesn't interrupt navigation.
+      setMobileOpen(false)
+      setTimeout(() => scrollToSection(href), MOBILE_MENU_CLOSE_DURATION)
+    } else {
+      scrollToSection(href)
+    }
+  }
+
+  return (
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          <img
+            href="#home"
+            onClick={(e) => handleNavClick(e, '#home')}
+            className="flex items-center gap-2"
+            src="/logo.jpeg"
+            alt="Dr. Ghazala Mushtaq Logo"
+            // width={50}
+            // height={50}
+          />
+          
+            
+        
+
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className={`text-sm font-medium transition-colors hover:text-warm-copper ${
+                  scrolled ? 'text-gray-700' : 'text-white/90'
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="flex items-center gap-2 bg-warm-copper hover:bg-warm-copper/90 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-warm-copper/25"
+            >
+              <Calendar size={16} />
+              Book Appointment
+            </a>
+          </div>
+
+          <button
+            className={`lg:hidden p-2 transition-colors ${
+              scrolled ? 'text-deep-teal' : 'text-white'
+            }`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: MOBILE_MENU_CLOSE_DURATION / 1000 }}
+            className="lg:hidden bg-white shadow-xl overflow-hidden"
+          >
+            <div className="px-4 py-4 space-y-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="block text-gray-700 font-medium py-2 hover:text-warm-copper transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
+                className="flex items-center justify-center gap-2 bg-warm-copper text-white px-5 py-3 rounded-full text-sm font-semibold transition-all hover:bg-warm-copper/90"
+              >
+                <Calendar size={16} />
+                Book Appointment
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  )
+}

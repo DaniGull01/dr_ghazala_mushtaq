@@ -1,108 +1,75 @@
-import { motion } from 'framer-motion'
-import { MapPin, Calendar, Building } from 'lucide-react'
+
+import { Building, MapPin, Calendar } from 'lucide-react'
 
 const experiences = [
+   {
+    title: 'WellCare Therapy Clinic',
+    org: 'Consultant Physiotherapist',
+    location: 'G-9/4 street 55, Al-Muslim Pharmacy Basement, Islamabad',
+    period: '',
+    description:
+      'Dry Needling & Cupping Expert | Certified in Spinal Chiropractic Techniques & Post-Operative Rehabilitation',
+    color: 'from-warm-copper to-amber-600',
+  },
   {
-    period: 'Feb 2026 – Present',
-    title: 'Physiotherapist – Independent Practice',
+    period: 'Previous Experience',
+    title: 'Former Clinical Physiotherapist',
     org: 'Rahim Hospital',
     location: 'Rawalpindi',
+    description:
+      'Provided outpatient physiotherapy assessment, individualized rehabilitation planning, manual therapy, dry needling, and cupping therapy to support pain management and functional recovery.',
     color: 'from-warm-copper to-amber-600',
-    items: [
-      'OPD Assessment & Diagnosis',
-      'Dry Needling & Cupping Therapy',
-      'Manual Therapy Techniques',
-      'Rehabilitation Planning',
-    ],
+  },
+  {
+    period: 'Previous Experience',
+    title: 'Former Physiotherapist – Orthopedic Rehabilitation',
+    org: 'Benazir Bhutto Hospital',
+    location: 'Rawalpindi',
+    description:
+      'Provided orthopedic physiotherapy and rehabilitation services, focusing on patient assessment, functional mobility, therapeutic exercises, and individualized rehabilitation planning to support recovery and improve physical function.',
+    color: 'from-medical-blue to-cyan-500',
   },
   {
     period: 'Nov 2025 – Mar 2026',
     title: 'Physiotherapist',
     org: 'National Institute of Rehabilitation Medicine (NIRM)',
     location: 'Islamabad',
-    color: 'from-medical-blue to-cyan-500',
-    items: [
-      'Orthopedic Rehabilitation',
-      'Neurological Rehabilitation',
-      'Treatment Planning',
-      'Progress Documentation',
-    ],
-  },
-  {
-    period: 'Aug – Sep 2024',
-    title: 'Orthopedic Rehabilitation Observership',
-    org: 'Benazir Bhutto Hospital',
-    location: 'Rawalpindi',
-    color: 'from-emerald-500 to-teal-500',
-    items: [
-      'Orthopedic Assessment',
-      'Rehabilitation Protocol Observation',
-      'Clinical Exposure',
-    ],
-  },
-  {
-    period: 'Jun – Aug 2023',
-    title: 'Musculoskeletal Therapy Observership',
-    org: 'Clinical Placement',
-    location: '',
+    description:
+      'Gained clinical experience in orthopedic and neurological rehabilitation, patient assessment, treatment planning, monitoring progress, and clinical documentation.',
     color: 'from-purple-500 to-violet-500',
-    items: [
-      'Musculoskeletal Assessment',
-      'Therapy Observation',
-      'Patient Management',
-    ],
-  },
+  }
 ]
-
 export default function Experience() {
   return (
     <section id="experience" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-warm-copper font-semibold text-sm tracking-wider uppercase">My Journey</span>
+        <div className="text-center mb-12">
+          <span className="text-warm-copper font-semibold text-sm tracking-wider uppercase">
+            My Journey
+          </span>
+
           <h2 className="text-3xl lg:text-4xl font-heading font-bold text-deep-teal mt-2">
             Clinical Experience
           </h2>
-          <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-            Clinical training and professional experience in leading healthcare institutions
-          </p>
-        </motion.div>
+        </div>
 
-        <div className="relative max-w-3xl mx-auto">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 md:-translate-x-px" />
+        <div className="max-w-4xl mx-auto">
+          <ul className="space-y-6">
+            {experiences.map((exp) => (
+              <li key={exp.title} className="flex items-start gap-4">
+                <div
+                  className={`mt-2 w-3 h-3 rounded-full bg-gradient-to-br ${exp.color} flex-shrink-0`}
+                />
 
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative flex flex-col md:flex-row gap-6 md:gap-12 mb-12 last:mb-0 ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              }`}
-            >
-              {/* Timeline Dot */}
-              <div className="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-warm-copper to-amber-500 border-2 border-white shadow z-10" />
+                <div className="flex-1">
+                  <h3 className="text-lg font-heading font-bold text-deep-teal mb-2">
+                    {exp.title}
+                  </h3>
 
-              {/* Content Card */}
-              <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-warm-copper bg-warm-copper/10 px-3 py-1 rounded-full mb-3">
-                    <Calendar size={12} />
-                    {exp.period}
-                  </span>
-                  <h3 className="text-lg font-heading font-bold text-deep-teal mb-1">{exp.title}</h3>
-                  <div className="flex items-center gap-3 text-gray-500 text-sm mb-4">
+                  <div className="flex flex-wrap items-center gap-2 text-gray-500 text-sm mb-3">
                     <Building size={14} />
                     <span>{exp.org}</span>
+
                     {exp.location && (
                       <>
                         <span className="text-gray-300">|</span>
@@ -110,19 +77,23 @@ export default function Experience() {
                         <span>{exp.location}</span>
                       </>
                     )}
+
+                    {exp.period && (
+                      <>
+                        <span className="text-gray-300">|</span>
+                        <Calendar size={14} />
+                        <span>{exp.period}</span>
+                      </>
+                    )}
                   </div>
-                  <ul className="space-y-2">
-                    {exp.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-gray-600 text-sm">
-                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${exp.color} flex-shrink-0`} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+
+                  <p className="text-gray-600 text-sm leading-7">
+                    {exp.description}
+                  </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

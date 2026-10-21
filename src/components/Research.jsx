@@ -31,7 +31,7 @@ export default function Research() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&q=80"
+                src="./SI joint.jpg"
                 alt="Medical research and evidence-based practice"
                 className="w-full h-80 object-cover"
                 loading="lazy"
@@ -67,10 +67,17 @@ export default function Research() {
                   <p className="text-gray-500 text-sm leading-relaxed mb-6">
                     A comparative study evaluating the effectiveness of two treatment approaches for patients suffering from sacroiliac joint dysfunction. This research contributes to evidence-based practice in musculoskeletal physiotherapy.
                   </p>
-                  <button className="inline-flex items-center gap-2 bg-deep-teal hover:bg-deep-teal/90 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg cursor-pointer">
-                    <Download size={16} />
-                    Download Publication
-                  </button>
+                 
+<a
+  href="https://www.xisdxjxsu.asia/viewarticle.php?aid=4006"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 bg-deep-teal hover:bg-deep-teal/90 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg cursor-pointer"
+>
+  <Download size={16} />
+  Download Publication
+</a>
+
                 </div>
               </div>
             </div>

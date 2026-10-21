@@ -151,9 +151,9 @@ export default function Contact() {
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 overflow-hidden">
               <h4 className="font-heading font-bold text-deep-teal mb-4">Service Location</h4>
               <iframe
-                src="https://maps.google.com/maps?q=33.613948420284075,73.06781338465711&z=15&output=embed"
+                src="https://maps.google.com/maps?q=33.685185166582094,73.04318282883553&z=15&output=embed"
                 width="100%"
-                height="250"
+                height="250"           
                 style={{ border: 0, borderRadius: '0.75rem' }}
                 allowFullScreen=""
                 loading="lazy"

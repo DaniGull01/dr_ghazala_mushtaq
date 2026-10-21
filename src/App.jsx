@@ -20,9 +20,9 @@ export default function App() {
       <Navbar />
       <Hero />
       <About />
-      <Expertise />
-      <Services />
       <Experience />
+      <Services />
+      
       <Certifications />
       <Research />
       <Skills />
